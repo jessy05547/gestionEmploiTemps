@@ -11,9 +11,9 @@
   Controller: com.jessy.controllers.EvenementsController
 -->
 <StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.jessy.controllers.EvenementsController"
-           styleClass="app-background" prefWidth="1440" prefHeight="900">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.jessy.controller.EvenementsController"
+            styleClass="app-background" prefWidth="1440" prefHeight="900">
 
     <BorderPane>
 
@@ -31,7 +31,7 @@
                     <Region HBox.hgrow="ALWAYS"/>
 
                     <TextField fx:id="champRecherche" promptText="Rechercher un événement..."
-                               styleClass="input-field" prefWidth="240"/>
+                                styleClass="input-field" prefWidth="240"/>
 
                     <ComboBox fx:id="filtreCategorie" promptText="Catégorie" styleClass="combo-box"/>
 
