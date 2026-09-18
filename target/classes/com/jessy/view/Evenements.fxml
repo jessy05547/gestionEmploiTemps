@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.geometry.Insets?>
+
+<!--
+  Evenements.fxml
+  Visualisation des événements : bascule Calendrier (WebView + JS) / Liste.
+  Controller: com.jessy.controllers.EvenementsController
+-->
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.jessy.controllers.EvenementsController"
+           styleClass="app-background" prefWidth="1440" prefHeight="900">
+
+    <BorderPane>
+
+        <left>
+            <fx:include source="Sidebar.fxml"/>
+        </left>
+
+        <center>
+            <VBox spacing="20">
+                <padding><Insets top="30" right="40" bottom="30" left="40"/></padding>
+
+                <!-- En-tête -->
+                <HBox alignment="CENTER_LEFT" spacing="16">
+                    <Label text="Événements" styleClass="title-xl"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <TextField fx:id="champRecherche" promptText="Rechercher un événement..."
+                               styleClass="input-field" prefWidth="240"/>
+
+                    <ComboBox fx:id="filtreCategorie" promptText="Catégorie" styleClass="combo-box"/>
+
+                    <ToggleButton fx:id="toggleVueCalendrier" text="Calendrier" styleClass="toggle-button" selected="true"/>
+                    <ToggleButton fx:id="toggleVueListe" text="Liste" styleClass="toggle-button"/>
+
+                    <Button text="+ Nouvel événement" styleClass="btn-primary" onAction="#nouvelEvenement"/>
+                </HBox>
+
+                <!-- Zone de contenu : calendrier interactif (JS) ou liste -->
+                <StackPane VBox.vgrow="ALWAYS" styleClass="glass-pane">
+                    <padding><Insets top="4" right="4" bottom="4" left="4"/></padding>
+
+                    <!-- Vue Calendrier : WebView chargeant calendar.html + calendar.js -->
+                    <WebView fx:id="webCalendrier" visible="true" managed="true"/>
+
+                    <!-- Vue Liste : alternative native JavaFX -->
+                    <ScrollPane fx:id="scrollListe" visible="false" managed="false"
+                                fitToWidth="true" styleClass="scroll-pane">
+                        <VBox fx:id="listeEvenementsBox" spacing="12">
+                            <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                            <!-- Cartes d'événements générées dynamiquement par le contrôleur -->
+                        </VBox>
+                    </ScrollPane>
+
+                </StackPane>
+
+            </VBox>
+        </center>
+
+    </BorderPane>
+
+</StackPane>

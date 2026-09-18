@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  Racine : AnchorPane pour occuper toute la fenêtre (fond plein écran, responsive)
+  Le StackPane centre la carte de connexion quelle que soit la taille de la fenêtre
+-->
+<AnchorPane fx:id="rootPane" styleClass="root-background"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jessy.controller.LoginController"
+            prefWidth="900" prefHeight="600">
+
+    <StackPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <!-- Carte centrale -->
+        <VBox fx:id="cardLogin" styleClass="card" alignment="CENTER" spacing="18"
+            maxWidth="380" maxHeight="480">
+
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <Label text="☕" styleClass="icon-logo"/>
+
+            <Label text="Bon retour" styleClass="title-text"/>
+            <Label text="Connectez-vous à votre emploi du temps" styleClass="subtitle-text"/>
+
+            <VBox spacing="6" styleClass="field-group">
+                <Label text="Email" styleClass="field-label"/>
+                <TextField fx:id="champEmail" promptText="vous@exemple.com" styleClass="input-field"/>
+            </VBox>
+
+            <VBox spacing="6" styleClass="field-group">
+                <Label text="Mot de passe" styleClass="field-label"/>
+                <PasswordField fx:id="champPassword" promptText="••••••••" styleClass="input-field"/>
+            </VBox>
+
+            <Label fx:id="labelErreur" styleClass="error-text" visible="false" managed="false"/>
+
+            <Button fx:id="btnConnexion" text="Se connecter" styleClass="btn-primary"
+                    maxWidth="Infinity" onAction="#onClickConnexion"/>
+
+            <HBox alignment="CENTER" spacing="4">
+                <Label text="Pas encore de compte ?" styleClass="footer-text"/>
+                <Hyperlink text="Créer un compte" styleClass="link-text" onAction="#onClickAllerRegister"/>
+            </HBox>
+
+        </VBox>
+    </StackPane>
+</AnchorPane>

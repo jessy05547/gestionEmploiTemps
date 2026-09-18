@@ -1,0 +1,210 @@
+:root {
+    --espresso: #2B1B14;
+    --mocha: #4A2C1F;
+    --coffee: #6F4E37;
+    --caramel: #B98358;
+    --latte: #E8CBA3;
+    --cream: #FAF3E8;
+    --accent: #D98E4A;
+    --accent-light: #F2B47A;
+    --danger: #C0524A;
+    --success: #7A9E63;
+    --glass: rgba(255, 248, 240, 0.10);
+    --glass-strong: rgba(255, 248, 240, 0.18);
+    --glass-border: rgba(255, 248, 240, 0.28);
+    --text: #FFF8F0;
+    --text-muted: rgba(255, 248, 240, 0.62);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: transparent;
+    font-family: "Segoe UI", sans-serif;
+    color: var(--text);
+    overflow: hidden;
+}
+
+.calendar-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 18px 22px;
+}
+
+/* ===== En-tête ===== */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.calendar-header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    min-width: 200px;
+    text-align: center;
+}
+
+.header-spacer { flex: 1; }
+
+.nav-btn, .today-btn {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.nav-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.today-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.nav-btn:hover, .today-btn:hover {
+    background: var(--glass-strong);
+}
+
+/* ===== Jours de la semaine ===== */
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 0 10px 0;
+}
+
+/* ===== Grille du mois ===== */
+.calendar-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.day-cell {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+    transition: background 0.15s ease;
+}
+
+.day-cell:hover {
+    background: var(--glass-strong);
+}
+
+.day-cell.outside {
+    opacity: 0.35;
+}
+
+.day-cell.today {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.day-number {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.day-cell.today .day-number {
+    color: var(--accent-light);
+    font-weight: 800;
+}
+
+.day-events {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden;
+}
+
+.event-chip {
+    font-size: 10.5px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    background: linear-gradient(to right, var(--accent), var(--caramel));
+    color: var(--espresso);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.event-chip.recurrent::before {
+    content: "↻ ";
+}
+
+.event-chip.cat-reunion { background: linear-gradient(to right, #8FA6D9, #6C86BF); color: #1A2338; }
+.event-chip.cat-cours   { background: linear-gradient(to right, var(--accent), var(--caramel)); color: var(--espresso); }
+.event-chip.cat-perso   { background: linear-gradient(to right, var(--success), #5E8248); color: #17250F; }
+
+.more-events {
+    font-size: 10px;
+    color: var(--text-muted);
+    padding-left: 4px;
+    cursor: pointer;
+}
+
+/* ===== Info-bulle événement ===== */
+.event-popover {
+    position: fixed;
+    min-width: 220px;
+    background: var(--mocha);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 50;
+}
+
+.event-popover.hidden { display: none; }
+
+.popover-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.popover-time, .popover-location { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
+
+.popover-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.pop-btn {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 0;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pop-edit { background: var(--accent); color: var(--espresso); }
+.pop-delete { background: var(--danger); color: var(--text); }

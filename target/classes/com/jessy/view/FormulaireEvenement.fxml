@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!--
+  FormulaireEvenement.fxml
+  Sert à la fois pour "Créer un événement" et "Modifier l'événement"
+  (le contrôleur adapte le titre, pré-remplit les champs, et change
+  le libellé du bouton principal selon le mode).
+  Controller: com.jessy.controllers.FormulaireEvenementController
+-->
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.jessy.controllers.FormulaireEvenementController"
+           styleClass="app-background" prefWidth="1440" prefHeight="900">
+
+    <BorderPane>
+
+        <left>
+            <fx:include source="Sidebar.fxml"/>
+        </left>
+
+        <center>
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <StackPane alignment="TOP_CENTER">
+                    <padding><Insets top="34" right="40" bottom="40" left="40"/></padding>
+
+                    <VBox spacing="24" maxWidth="760" styleClass="glass-pane">
+                        <padding><Insets top="32" right="36" bottom="32" left="36"/></padding>
+
+                        <!-- En-tête -->
+                        <HBox alignment="CENTER_LEFT">
+                            <VBox spacing="4">
+                                <Label fx:id="lblTitreFormulaire" text="Créer un événement" styleClass="title-xl"/>
+                                <Label text="Remplissez les informations ci-dessous" styleClass="subtitle"/>
+                            </VBox>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="✕" styleClass="btn-icon" onAction="#annuler"/>
+                        </HBox>
+
+                        <Separator styleClass="divider"/>
+
+                        <!-- Titre de l'événement -->
+                        <VBox spacing="6">
+                            <Label text="Titre" styleClass="field-label"/>
+                            <TextField fx:id="champTitre" styleClass="input-field"
+                                       promptText="Ex : Réunion pédagogique"/>
+                        </VBox>
+
+                        <!-- Description -->
+                        <VBox spacing="6">
+                            <Label text="Description" styleClass="field-label"/>
+                            <TextArea fx:id="champDescription" styleClass="text-area"
+                                      promptText="Détails, notes, ordre du jour..." prefRowCount="3" wrapText="true"/>
+                        </VBox>
+
+                        <!-- Date / heure -->
+                        <HBox spacing="20">
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Date de début" styleClass="field-label"/>
+                                <DatePicker fx:id="dateDebut" styleClass="date-picker" maxWidth="Infinity"/>
+                            </VBox>
+                            <VBox spacing="6">
+                                <Label text="Heure de début" styleClass="field-label"/>
+                                <ComboBox fx:id="heureDebut" styleClass="combo-box" promptText="09:00"/>
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="20">
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Date de fin" styleClass="field-label"/>
+                                <DatePicker fx:id="dateFin" styleClass="date-picker" maxWidth="Infinity"/>
+                            </VBox>
+                            <VBox spacing="6">
+                                <Label text="Heure de fin" styleClass="field-label"/>
+                                <ComboBox fx:id="heureFin" styleClass="combo-box" promptText="10:00"/>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Lieu + catégorie -->
+                        <HBox spacing="20">
+                            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                <Label text="Lieu" styleClass="field-label"/>
+                                <TextField fx:id="champLieu" styleClass="input-field" promptText="Ex : Salle B204"/>
+                            </VBox>
+                            <VBox spacing="6" prefWidth="220">
+                                <Label text="Catégorie" styleClass="field-label"/>
+                                <ComboBox fx:id="champCategorie" styleClass="combo-box" maxWidth="Infinity"
+                                          promptText="Choisir..."/>
+                            </VBox>
+                        </HBox>
+
+                        <!-- Couleur / badge -->
+                        <VBox spacing="8">
+                            <Label text="Couleur" styleClass="field-label"/>
+                            <HBox fx:id="paletteCouleurs" spacing="10">
+                                <!-- Pastilles de couleur générées ou statiques -->
+                                <ToggleButton fx:id="couleurAccent" styleClass="day-toggle" selected="true"/>
+                                <ToggleButton fx:id="couleurBleu" styleClass="day-toggle"/>
+                                <ToggleButton fx:id="couleurVert" styleClass="day-toggle"/>
+                                <ToggleButton fx:id="couleurRouge" styleClass="day-toggle"/>
+                            </HBox>
+                        </VBox>
+
+                        <Separator styleClass="divider"/>
+
+                        <!-- ===== RÉCURRENCE ===== -->
+                        <VBox spacing="14">
+                            <HBox alignment="CENTER_LEFT" spacing="12">
+                                <Label text="Récurrence" styleClass="title-md"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <CheckBox fx:id="caseRecurrence" text="Activer" styleClass="check-box"/>
+                            </HBox>
+
+                            <VBox fx:id="panneauRecurrence" spacing="16" disable="true" managed="true" visible="true">
+                                <padding><Insets top="4" right="0" bottom="0" left="0"/></padding>
+
+                                <!-- Fréquence -->
+                                <HBox spacing="10">
+                                    <ToggleButton fx:id="freqAucune" text="Aucune" styleClass="toggle-button" selected="true"/>
+                                    <ToggleButton fx:id="freqQuotidienne" text="Quotidienne" styleClass="toggle-button"/>
+                                    <ToggleButton fx:id="freqHebdomadaire" text="Hebdomadaire" styleClass="toggle-button"/>
+                                    <ToggleButton fx:id="freqMensuelle" text="Mensuelle" styleClass="toggle-button"/>
+                                </HBox>
+
+                                <!-- Jours de la semaine (utile pour hebdomadaire) -->
+                                <VBox spacing="6">
+                                    <Label text="Répéter les jours" styleClass="field-label"/>
+                                    <HBox spacing="8">
+                                        <ToggleButton fx:id="jourLun" text="L" styleClass="day-toggle"/>
+                                        <ToggleButton fx:id="jourMar" text="M" styleClass="day-toggle"/>
+                                        <ToggleButton fx:id="jourMer" text="M" styleClass="day-toggle"/>
+                                        <ToggleButton fx:id="jourJeu" text="J" styleClass="day-toggle"/>
+                                        <ToggleButton fx:id="jourVen" text="V" styleClass="day-toggle"/>
+                                        <ToggleButton fx:id="jourSam" text="S" styleClass="day-toggle"/>
+                                        <ToggleButton fx:id="jourDim" text="D" styleClass="day-toggle"/>
+                                    </HBox>
+                                </VBox>
+
+                                <!-- Intervalle -->
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <Label text="Tous les" styleClass="body-text"/>
+                                    <Spinner fx:id="intervalleRecurrence" styleClass="input-field" prefWidth="80"
+                                             editable="true"/>
+                                    <Label fx:id="lblUniteIntervalle" text="semaine(s)" styleClass="body-text"/>
+                                </HBox>
+
+                                <!-- Fin de récurrence -->
+                                <VBox spacing="8">
+                                    <Label text="Se termine" styleClass="field-label"/>
+                                    <HBox spacing="16" alignment="CENTER_LEFT">
+                                        <RadioButton fx:id="finJamais" text="Jamais" styleClass="check-box"/>
+                                        <RadioButton fx:id="finLe" text="Le" styleClass="check-box"/>
+                                        <DatePicker fx:id="dateFinRecurrence" styleClass="date-picker" prefWidth="160"/>
+                                        <RadioButton fx:id="finApres" text="Après" styleClass="check-box"/>
+                                        <Spinner fx:id="nbOccurrences" styleClass="input-field" prefWidth="70" editable="true"/>
+                                        <Label text="occurrences" styleClass="body-text"/>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                        </VBox>
+
+                        <Separator styleClass="divider"/>
+
+                        <!-- ===== NOTIFICATION / RAPPEL ===== -->
+                        <VBox spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="12">
+                                <Label text="Rappel" styleClass="title-md"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <CheckBox fx:id="caseRappel" text="Activer" styleClass="check-box" selected="true"/>
+                            </HBox>
+                            <ComboBox fx:id="delaiRappel" styleClass="combo-box" maxWidth="Infinity"
+                                      promptText="15 minutes avant"/>
+                        </VBox>
+
+                        <Separator styleClass="divider"/>
+
+                        <!-- Actions -->
+                        <HBox spacing="14" alignment="CENTER_RIGHT">
+                            <Label fx:id="lblErreurFormulaire" styleClass="badge badge-danger" visible="false" managed="false"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="Annuler" styleClass="btn-secondary" onAction="#annuler"/>
+                            <Button fx:id="btnValider" text="Créer l'événement" styleClass="btn-primary"
+                                    onAction="#enregistrerEvenement"/>
+                        </HBox>
+
+                    </VBox>
+                </StackPane>
+            </ScrollPane>
+        </center>
+
+    </BorderPane>
+
+</StackPane>

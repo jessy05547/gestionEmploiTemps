@@ -1,0 +1,15 @@
+com\jessy\config\Connexion.class
+com\jessy\models\recurrence.class
+com\jessy\config\TestConnection.class
+com\jessy\controller\SidebarController.class
+com\jessy\models\evenement.class
+com\jessy\models\Utilisateur.class
+com\jessy\dao\UserDao.class
+com\jessy\controller\Session.class
+com\jessy\controller\LoginController.class
+com\jessy\SystemInfo.class
+com\jessy\App.class
+com\jessy\controller\RegisterController.class
+com\jessy\controller\DashboardController.class
+com\jessy\dao\recurrenceDao.class
+com\jessy\dao\evenementDao.class

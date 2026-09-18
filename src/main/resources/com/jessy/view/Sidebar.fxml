@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+
+<!--
+  Sidebar.fxml
+  Composant de navigation réutilisable, inclus via <fx:include> dans chaque page.
+  Controller: com.jessy.controllers.SidebarController
+-->
+<VBox fx:id="sidebarRoot" styleClass="sidebar" prefWidth="230" maxWidth="230"
+        xmlns="http://javafx.com/javafx"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="com.jessy.controller.SidebarController">
+
+        <!-- Logo / marque -->
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="brand">
+        <Polygon styleClass="brand-icon" points="0,10,10,0,20,10,10,20"/>
+        <Label text="CaféTime"/>
+        </HBox>
+
+        <VBox spacing="6">
+        <Button fx:id="btnDashboard" text="Tableau de bord" styleClass="nav-item-active"
+                maxWidth="Infinity" onAction="#allerDashboard"/>
+        <Button fx:id="btnEvenements" text="Événements" styleClass="nav-item"
+                maxWidth="Infinity" onAction="#allerEvenements"/>
+        <Button fx:id="btnCreer" text="Créer un événement" styleClass="nav-item"
+                maxWidth="Infinity" onAction="#allerCreerEvenement"/>
+        <Button fx:id="btnNotifications" text="Notifications" styleClass="nav-item"
+                maxWidth="Infinity" onAction="#allerNotifications"/>
+        <Button fx:id="btnProfil" text="Profil" styleClass="nav-item"
+                maxWidth="Infinity" onAction="#allerProfil"/>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <Separator styleClass="divider"/>
+
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="nav-item">
+        <ImageView fx:id="avatarMini" fitWidth="30" fitHeight="30" styleClass="avatar"/>
+        <VBox spacing="1">
+        <Label fx:id="lblNomUtilisateur" text="Utilisateur" styleClass="body-text"/>
+        <Label text="Voir le profil" styleClass="muted-text"/>
+        </VBox>
+        </HBox>
+
+        <Button fx:id="btnDeconnexion" text="Se déconnecter" styleClass="btn-secondary"
+        maxWidth="Infinity" onAction="#seDeconnecter"/>
+
+</VBox>

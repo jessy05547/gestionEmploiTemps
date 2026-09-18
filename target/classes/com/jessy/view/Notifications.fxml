@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
+
+<!--
+  Notifications.fxml
+  Liste des notifications (rappels d'événements, invitations, système).
+  Controller: com.jessy.controllers.NotificationsController
+-->
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.jessy.controllers.NotificationsController"
+           styleClass="app-background" prefWidth="1440" prefHeight="900">
+
+    <BorderPane>
+
+        <left>
+            <fx:include source="Sidebar.fxml"/>
+        </left>
+
+        <center>
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <StackPane alignment="TOP_CENTER">
+                    <padding><Insets top="30" right="40" bottom="40" left="40"/></padding>
+
+                    <VBox spacing="20" maxWidth="800">
+
+                        <!-- En-tête -->
+                        <HBox alignment="CENTER_LEFT" spacing="16">
+                            <VBox spacing="4">
+                                <Label text="Notifications" styleClass="title-xl"/>
+                                <Label fx:id="lblCompteurNonLues" text="3 non lues" styleClass="subtitle"/>
+                            </VBox>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="Tout marquer comme lu" styleClass="btn-secondary" onAction="#toutMarquerLu"/>
+                            <Button text="🗑 Vider" styleClass="btn-secondary" onAction="#viderNotifications"/>
+                        </HBox>
+
+                        <!-- Filtres -->
+                        <HBox spacing="10">
+                            <ToggleButton fx:id="filtreToutes" text="Toutes" styleClass="toggle-button" selected="true"/>
+                            <ToggleButton fx:id="filtreRappels" text="Rappels" styleClass="toggle-button"/>
+                            <ToggleButton fx:id="filtreModifs" text="Modifications" styleClass="toggle-button"/>
+                            <ToggleButton fx:id="filtreSysteme" text="Système" styleClass="toggle-button"/>
+                        </HBox>
+
+                        <Separator styleClass="divider"/>
+
+                        <!-- Liste des notifications -->
+                        <VBox fx:id="listeNotifications" spacing="10">
+
+                            <!-- Exemple statique d'élément (le reste est généré dynamiquement) -->
+                            <HBox styleClass="notif-item notif-item-unread" spacing="14" alignment="CENTER_LEFT">
+                                <Circle radius="4" styleClass="notif-dot"/>
+                                <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                    <Label text="Rappel : Réunion pédagogique dans 15 min" styleClass="body-text"/>
+                                    <Label text="Salle B204 · il y a 2 minutes" styleClass="muted-text"/>
+                                </VBox>
+                                <Button text="✕" styleClass="btn-icon"/>
+                            </HBox>
+
+                        </VBox>
+
+                        <!-- État vide -->
+                        <VBox fx:id="etatVide" spacing="10" alignment="CENTER" managed="false" visible="false">
+                            <padding><Insets top="60" right="0" bottom="60" left="0"/></padding>
+                            <Label text="🔔" style="-fx-font-size: 40px;"/>
+                            <Label text="Aucune notification pour le moment" styleClass="muted-text"/>
+                        </VBox>
+
+                    </VBox>
+                </StackPane>
+            </ScrollPane>
+        </center>
+
+    </BorderPane>
+
+</StackPane>

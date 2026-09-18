@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<!--
+  ConfirmationSuppression.fxml
+  Modale légère affichée par-dessus la page courante (dans un StackPane
+  ou une Stage sans décoration), pour confirmer la suppression d'un
+  événement (simple ou récurrent).
+  Controller: com.jessy.controllers.ConfirmationSuppressionController
+-->
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.jessy.controllers.ConfirmationSuppressionController"
+           styleClass="modal-overlay" prefWidth="1440" prefHeight="900">
+
+    <VBox styleClass="glass-pane" maxWidth="420" maxHeight="-Infinity" spacing="18"
+          StackPane.alignment="CENTER">
+        <padding><Insets top="30" right="30" bottom="26" left="30"/></padding>
+
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <Label text="⚠" style="-fx-font-size: 22px; -fx-text-fill: #E3A199;"/>
+            <Label text="Supprimer l'événement ?" styleClass="title-lg"/>
+        </HBox>
+
+        <Label fx:id="lblNomEvenement" text="« Réunion pédagogique »" styleClass="body-text" wrapText="true"/>
+
+        <Label text="Cette action est irréversible." styleClass="muted-text"/>
+
+        <!-- Options affichées uniquement si l'événement est récurrent -->
+        <VBox fx:id="panneauOptionsRecurrence" spacing="10" managed="false" visible="false">
+            <Separator styleClass="divider"/>
+            <Label text="Cet événement fait partie d'une série récurrente." styleClass="muted-text" wrapText="true"/>
+            <RadioButton fx:id="optionCetEvenement" text="Supprimer uniquement cette occurrence" styleClass="check-box" selected="true"/>
+            <RadioButton fx:id="optionCetEvenementEtSuivants" text="Supprimer cette occurrence et les suivantes" styleClass="check-box"/>
+            <RadioButton fx:id="optionToutesLesOccurrences" text="Supprimer toute la série" styleClass="check-box"/>
+        </VBox>
+
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <Button text="Annuler" styleClass="btn-secondary" onAction="#annuler"/>
+            <Button text="Supprimer" styleClass="btn-danger" onAction="#confirmerSuppression"/>
+        </HBox>
+
+    </VBox>
+
+</StackPane>

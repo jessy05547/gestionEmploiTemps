@@ -1,0 +1,135 @@
+/* ============================================
+   THEME CHOCOLAT - Palette de couleurs
+   ============================================ */
+.root {
+    -fx-chocolat-fonce: #3C2415;
+    -fx-chocolat: #6F4E37;
+    -fx-chocolat-clair: #A9744F;
+    -fx-caramel: #D2A679;
+    -fx-creme: #FFF8F0;
+    -fx-blanc-casse: #FFFDF9;
+    -fx-texte-clair: #FBEFE4;
+    -fx-erreur: #C0392B;
+
+    /* Police moderne avec fallback système si non installée */
+    -fx-font-family: "Poppins", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ============================================
+   FOND GENERAL - dégradé chocolat
+   ============================================ */
+.root-background {
+    -fx-background-color: linear-gradient(to bottom right, #3C2415, #6F4E37 55%, #A9744F);
+}
+
+/* ============================================
+   CARTE DE CONNEXION / INSCRIPTION
+   ============================================ */
+.card {
+    -fx-background-color: #FFFDF9;
+    -fx-background-radius: 24;
+    -fx-effect: dropshadow(gaussian, rgba(60,36,21,0.45), 30, 0.2, 0, 12);
+}
+
+.icon-logo {
+    -fx-font-size: 42px;
+    -fx-padding: 0 0 4 0;
+}
+
+.title-text {
+    -fx-font-size: 26px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #3C2415;
+}
+
+.subtitle-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #8A6E5C;
+    -fx-padding: 0 0 8 0;
+}
+
+/* ============================================
+   CHAMPS DE SAISIE
+   ============================================ */
+.field-group {
+    -fx-alignment: CENTER_LEFT;
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #6F4E37;
+}
+
+.input-field {
+    -fx-background-color: #F5EBDF;
+    -fx-background-radius: 10;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10;
+    -fx-padding: 10 14;
+    -fx-font-size: 13px;
+    -fx-text-fill: #3C2415;
+    -fx-prompt-text-fill: #B69A85;
+}
+
+/* Effet au focus : bordure caramel + léger fond plus clair */
+.input-field:focused {
+    -fx-background-color: #FBF3E9;
+    -fx-border-color: #D2A679;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+}
+
+/* ============================================
+   BOUTON PRINCIPAL
+   ============================================ */
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, #6F4E37, #8A5A3C);
+    -fx-background-radius: 12;
+    -fx-text-fill: #FFF8F0;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-padding: 12 0;
+    -fx-cursor: hand;
+}
+
+/* JavaFX CSS ne supporte pas "transition" comme le CSS web :
+   l'effet de survol est instantané par défaut. */
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, #7D5A41, #9C6B47);
+    -fx-effect: dropshadow(gaussian, rgba(111,78,55,0.55), 16, 0.3, 0, 4);
+}
+
+.btn-primary:pressed {
+    -fx-background-color: #5C3F2C;
+}
+
+/* ============================================
+   TEXTES SECONDAIRES / LIENS
+   ============================================ */
+.footer-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #8A6E5C;
+}
+
+.link-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #A9744F;
+    -fx-border-color: transparent;
+}
+
+.link-text:hover {
+    -fx-text-fill: #6F4E37;
+    -fx-underline: true;
+}
+
+/* ============================================
+   MESSAGE D'ERREUR
+   ============================================ */
+.error-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #C0392B;
+    -fx-font-weight: 600;
+    -fx-wrap-text: true;
+}

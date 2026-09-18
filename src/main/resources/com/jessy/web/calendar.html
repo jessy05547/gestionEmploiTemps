@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Calendrier des événements</title>
+<link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+
+<div class="calendar-wrap">
+
+    <header class="calendar-header">
+        <button id="btnPrev" class="nav-btn" aria-label="Mois précédent">&#8249;</button>
+        <h1 id="monthLabel">Septembre 2026</h1>
+        <button id="btnNext" class="nav-btn" aria-label="Mois suivant">&#8250;</button>
+        <div class="header-spacer"></div>
+        <button id="btnToday" class="today-btn">Aujourd'hui</button>
+    </header>
+
+    <div class="weekdays">
+        <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span>
+        <span>Ven</span><span>Sam</span><span>Dim</span>
+    </div>
+
+    <div id="grid" class="calendar-grid"></div>
+
+</div>
+
+<!-- Info-bulle d'événement au survol / clic -->
+<div id="eventPopover" class="event-popover hidden">
+    <div class="popover-title" id="popTitle"></div>
+    <div class="popover-time" id="popTime"></div>
+    <div class="popover-location" id="popLocation"></div>
+    <div class="popover-actions">
+        <button id="popEdit" class="pop-btn pop-edit">Modifier</button>
+        <button id="popDelete" class="pop-btn pop-delete">Supprimer</button>
+    </div>
+</div>
+
+<script src="calendar.js"></script>
+</body>
+</html>

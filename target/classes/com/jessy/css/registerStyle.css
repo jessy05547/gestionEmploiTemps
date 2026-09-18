@@ -1,0 +1,162 @@
+/* ============================================
+   THEME CAFE - GLASSMORPHISM 3D
+   ============================================ */
+.root {
+    -fx-cafe-fonce: #2A1810;
+    -fx-cafe: #6F4E37;
+    -fx-cafe-clair: #A9744F;
+    -fx-caramel: #D2A679;
+    -fx-creme: #FFF8F0;
+    -fx-verre-clair: rgba(255,248,240,0.14);
+    -fx-verre-bordure: rgba(255,248,240,0.35);
+    -fx-texte-clair: #FBEFE4;
+    -fx-erreur: #FF8A75;
+
+    -fx-font-family: "Poppins", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ============================================
+   FOND GENERAL - degrade profond avec halos
+   ============================================ */
+.root-background {
+    -fx-background-color:
+        radial-gradient(center 20% 15%, radius 60%, rgba(210,166,121,0.25), transparent),
+        radial-gradient(center 85% 80%, radius 55%, rgba(111,78,55,0.35), transparent),
+        linear-gradient(to bottom right, #1C1108, #3C2415 50%, #6F4E37);
+}
+
+/* ============================================
+   CARTE VERRE (glassmorphism)
+   ============================================ */
+.card {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(255,248,240,0.16), rgba(255,248,240,0.05));
+    -fx-background-radius: 26;
+    -fx-border-radius: 26;
+    -fx-border-width: 1.4;
+    -fx-border-color: -fx-verre-bordure;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 40, 0.25, 0, 22);
+}
+
+/* Reflet clair en haut de la carte pour accentuer l'effet "verre" */
+.card-glow {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.22), transparent);
+    -fx-background-radius: 26 26 0 0;
+}
+
+.icon-logo {
+    -fx-font-size: 44px;
+    -fx-padding: 0 0 4 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0.3, 0, 4);
+}
+
+.title-text {
+    -fx-font-size: 26px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-texte-clair;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 6, 0.2, 0, 2);
+}
+
+.subtitle-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: rgba(251,239,228,0.75);
+    -fx-padding: 0 0 8 0;
+}
+
+/* ============================================
+   CHAMPS DE SAISIE - verre creuse (effet 3D enfonce)
+   ============================================ */
+.field-group {
+    -fx-alignment: CENTER_LEFT;
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -fx-caramel;
+}
+
+.input-field {
+    -fx-background-color: rgba(42,24,16,0.35);
+    -fx-background-radius: 12;
+    -fx-border-color: rgba(255,248,240,0.18);
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-padding: 10 14;
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-texte-clair;
+    -fx-prompt-text-fill: rgba(251,239,228,0.45);
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.45), 8, 0.2, 0, 2);
+}
+
+.input-field:focused {
+    -fx-background-color: rgba(42,24,16,0.5);
+    -fx-border-color: -fx-caramel;
+    -fx-border-width: 1.5;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.45), 8, 0.2, 0, 2),
+                dropshadow(gaussian, rgba(210,166,121,0.45), 12, 0.3, 0, 0);
+}
+
+/* ============================================
+   BOUTON PRINCIPAL - verre bombe avec reflet
+   ============================================ */
+.btn-primary {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(255,255,255,0.25), transparent 50%),
+        linear-gradient(to right, #8A5A3C, #6F4E37);
+    -fx-background-radius: 14;
+    -fx-border-color: rgba(255,248,240,0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 14;
+    -fx-text-fill: -fx-creme;
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-padding: 12 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 18, 0.25, 0, 8);
+}
+
+.btn-primary:hover {
+    -fx-background-color:
+        linear-gradient(to bottom, rgba(255,255,255,0.35), transparent 50%),
+        linear-gradient(to right, #9C6B47, #7D5A41);
+    -fx-effect: dropshadow(gaussian, rgba(210,166,121,0.55), 22, 0.35, 0, 10);
+}
+
+.btn-primary:pressed {
+    -fx-background-color:
+        linear-gradient(to bottom, transparent, rgba(0,0,0,0.2)),
+        linear-gradient(to right, #5C3F2C, #4A3122);
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 10, 0.3, 0, 3);
+}
+
+/* ============================================
+   TEXTES SECONDAIRES / LIENS
+   ============================================ */
+.footer-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(251,239,228,0.65);
+}
+
+.link-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-caramel;
+    -fx-border-color: transparent;
+}
+
+.link-text:hover {
+    -fx-text-fill: -fx-creme;
+    -fx-underline: true;
+}
+
+/* ============================================
+   MESSAGE D'ERREUR
+   ============================================ */
+.error-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-erreur;
+    -fx-font-weight: 600;
+    -fx-wrap-text: true;
+    -fx-effect: dropshadow(gaussian, rgba(255,138,117,0.4), 6, 0.3, 0, 0);
+}

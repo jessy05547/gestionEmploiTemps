@@ -1,0 +1,419 @@
+/* ============================================================
+   THEME "CAFÉ GLASS" — JavaFX CSS
+   Glassmorphism moderne, palette café / latte / crème
+   ============================================================ */
+
+* {
+    -fx-font-family: "Segoe UI", "Century Gothic", sans-serif;
+}
+
+.root {
+    /* --- Palette café --- */
+    -espresso: #2B1B14;
+    -mocha: #4A2C1F;
+    -coffee: #6F4E37;
+    -caramel: #B98358;
+    -latte: #E8CBA3;
+    -cream: #FAF3E8;
+    -cream-soft: #F5EAD9;
+    -accent: #D98E4A;
+    -accent-light: #F2B47A;
+    -danger: #C0524A;
+    -success: #7A9E63;
+    -glass-fill: rgba(255, 248, 240, 0.14);
+    -glass-fill-strong: rgba(255, 248, 240, 0.22);
+    -glass-border: rgba(255, 248, 240, 0.35);
+    -text-light: #FFF8F0;
+    -text-muted: rgba(255, 248, 240, 0.65);
+
+    -fx-background-color: linear-gradient(to bottom right, #3B241A, #6F4E37 45%, #8A6142 100%);
+}
+
+/* ============ FOND PLEIN ÉCRAN AVEC TEXTURE ============ */
+.app-background {
+    -fx-background-color: linear-gradient(to bottom right, #2B1B14, #4A2C1F 40%, #6F4E37 75%, #8A6142 100%);
+}
+
+.app-background .bokeh {
+    -fx-fill: radial-gradient(center 50% 50%, radius 60%, rgba(217,142,74,0.25), rgba(217,142,74,0.0));
+}
+
+/* ============ PANNEAUX VERRE (GLASSMORPHISM) ============ */
+.glass-pane {
+    -fx-background-color: -glass-fill;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: -glass-border;
+    -fx-border-width: 1.2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 24, 0.15, 0, 8);
+}
+
+.glass-pane-strong {
+    -fx-background-color: -glass-fill-strong;
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
+    -fx-border-color: -glass-border;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.30), 18, 0.1, 0, 6);
+}
+
+.card {
+    -fx-background-color: -glass-fill;
+    -fx-background-radius: 16;
+    -fx-border-color: -glass-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 16;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 14, 0.1, 0, 4);
+}
+
+.card:hover {
+    -fx-background-color: -glass-fill-strong;
+    -fx-cursor: hand;
+}
+
+/* ============ SIDEBAR ============ */
+.sidebar {
+    -fx-background-color: rgba(26, 16, 11, 0.55);
+    -fx-border-color: transparent -glass-border transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 26 14 26 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 20, 0.1, 4, 0);
+}
+
+.sidebar .brand {
+    -fx-text-fill: -text-light;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 30 6;
+}
+
+.sidebar .brand-icon {
+    -fx-fill: -accent;
+}
+
+.nav-item {
+    -fx-background-color: transparent;
+    -fx-background-radius: 12;
+    -fx-text-fill: -text-muted;
+    -fx-font-size: 14px;
+    -fx-padding: 12 16;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 12;
+}
+
+.nav-item:hover {
+    -fx-background-color: rgba(255,248,240,0.10);
+    -fx-text-fill: -text-light;
+}
+
+.nav-item-active {
+    -fx-background-color: linear-gradient(to right, -accent, -caramel);
+    -fx-text-fill: -espresso;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-padding: 12 16;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+    -fx-graphic-text-gap: 12;
+    -fx-effect: dropshadow(gaussian, rgba(217,142,74,0.5), 12, 0.2, 0, 2);
+}
+
+/* ============ TEXTES ============ */
+.title-xl {
+    -fx-text-fill: -text-light;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.title-lg {
+    -fx-text-fill: -text-light;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.title-md {
+    -fx-text-fill: -text-light;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+}
+
+.subtitle {
+    -fx-text-fill: -text-muted;
+    -fx-font-size: 13px;
+}
+
+.body-text {
+    -fx-text-fill: -text-light;
+    -fx-font-size: 13px;
+}
+
+.muted-text {
+    -fx-text-fill: -text-muted;
+    -fx-font-size: 12px;
+}
+
+.stat-number {
+    -fx-text-fill: -text-light;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+/* ============ BOUTONS ============ */
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, -accent, -caramel);
+    -fx-text-fill: #2B1B14;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 12;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(217,142,74,0.45), 14, 0.15, 0, 4);
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, -accent-light, -accent);
+}
+
+.btn-secondary {
+    -fx-background-color: -glass-fill;
+    -fx-text-fill: -text-light;
+    -fx-font-size: 13px;
+    -fx-background-radius: 12;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: -glass-fill-strong;
+}
+
+.btn-danger {
+    -fx-background-color: linear-gradient(to right, -danger, #8E3D37);
+    -fx-text-fill: -text-light;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 12;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(192,82,74,0.45), 12, 0.15, 0, 3);
+}
+
+.btn-danger:hover {
+    -fx-background-color: linear-gradient(to right, #D0645B, -danger);
+}
+
+.btn-icon {
+    -fx-background-color: -glass-fill;
+    -fx-background-radius: 50%;
+    -fx-min-width: 38;
+    -fx-min-height: 38;
+    -fx-max-width: 38;
+    -fx-max-height: 38;
+    -fx-cursor: hand;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 50%;
+}
+
+.btn-icon:hover {
+    -fx-background-color: -glass-fill-strong;
+}
+
+.btn-fab {
+    -fx-background-color: linear-gradient(to bottom right, -accent-light, -accent);
+    -fx-background-radius: 50%;
+    -fx-min-width: 58;
+    -fx-min-height: 58;
+    -fx-max-width: 58;
+    -fx-max-height: 58;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(217,142,74,0.6), 18, 0.25, 0, 6);
+}
+
+/* ============ CHAMPS DE SAISIE ============ */
+.input-field {
+    -fx-background-color: rgba(0,0,0,0.18);
+    -fx-text-fill: -text-light;
+    -fx-prompt-text-fill: -text-muted;
+    -fx-background-radius: 10;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 10 14;
+    -fx-font-size: 13px;
+}
+
+.input-field:focused {
+    -fx-border-color: -accent;
+    -fx-background-color: rgba(0,0,0,0.28);
+}
+
+.combo-box, .date-picker {
+    -fx-background-color: rgba(0,0,0,0.18);
+    -fx-background-radius: 10;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-mark-color: -text-light;
+}
+
+.combo-box .list-cell, .date-picker .list-cell {
+    -fx-text-fill: -text-light;
+    -fx-background-color: transparent;
+}
+
+.text-area {
+    -fx-background-color: rgba(0,0,0,0.18);
+    -fx-background-radius: 10;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+}
+
+.text-area .content {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+}
+
+.text-area .text {
+    -fx-fill: -text-light;
+}
+
+.field-label {
+    -fx-text-fill: -text-muted;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+}
+
+.check-box {
+    -fx-text-fill: -text-light;
+}
+
+.check-box .box {
+    -fx-background-color: rgba(0,0,0,0.2);
+    -fx-border-color: -glass-border;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+.check-box:selected .box {
+    -fx-background-color: -accent;
+}
+
+.toggle-button {
+    -fx-background-color: -glass-fill;
+    -fx-text-fill: -text-muted;
+    -fx-background-radius: 10;
+    -fx-padding: 8 14;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 10;
+    -fx-cursor: hand;
+}
+
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(to right, -accent, -caramel);
+    -fx-text-fill: -espresso;
+    -fx-font-weight: bold;
+}
+
+/* Jours de la semaine (pastille ronde, pour récurrence) */
+.day-toggle {
+    -fx-background-color: -glass-fill;
+    -fx-background-radius: 50%;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-max-width: 40;
+    -fx-max-height: 40;
+    -fx-text-fill: -text-muted;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 50%;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+}
+
+.day-toggle:selected {
+    -fx-background-color: linear-gradient(to bottom right, -accent-light, -accent);
+    -fx-text-fill: -espresso;
+    -fx-font-weight: bold;
+}
+
+/* ============ BADGES / TAGS ============ */
+.badge {
+    -fx-background-radius: 20;
+    -fx-padding: 4 12;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-accent { -fx-background-color: rgba(217,142,74,0.25); -fx-text-fill: -accent-light; }
+.badge-success { -fx-background-color: rgba(122,158,99,0.25); -fx-text-fill: #A9CF8E; }
+.badge-danger { -fx-background-color: rgba(192,82,74,0.25); -fx-text-fill: #E3A199; }
+.badge-info { -fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: -text-light; }
+
+/* ============ SÉPARATEUR ============ */
+.divider {
+    -fx-background-color: -glass-border;
+    -fx-pref-height: 1;
+}
+
+/* ============ SCROLLBARS DISCRÈTES ============ */
+.scroll-pane, .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(255,248,240,0.25);
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: rgba(255,248,240,0.4);
+}
+
+/* ============ NOTIFICATION TOAST / ITEM ============ */
+.notif-item {
+    -fx-background-color: -glass-fill;
+    -fx-background-radius: 14;
+    -fx-border-color: -glass-border;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+    -fx-padding: 14 16;
+}
+
+.notif-item-unread {
+    -fx-border-color: -accent;
+    -fx-border-width: 1 1 1 4;
+}
+
+.notif-dot {
+    -fx-fill: -accent;
+}
+
+/* ============ AVATAR ============ */
+.avatar {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-color: -accent;
+    -fx-border-width: 2;
+}
+
+/* ============ TOOLTIP ============ */
+.tooltip {
+    -fx-background-color: -espresso;
+    -fx-text-fill: -text-light;
+    -fx-background-radius: 8;
+    -fx-font-size: 11px;
+}
+
+/* ============ MODALE (fond assombri) ============ */
+.modal-overlay {
+    -fx-background-color: rgba(0,0,0,0.55);
+}

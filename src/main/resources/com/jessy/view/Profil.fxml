@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+
+<!--
+  Profil.fxml
+  Informations personnelles, sécurité (mot de passe), préférences de
+  notification.
+  Controller: com.jessy.controllers.ProfilController
+-->
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.jessy.controllers.ProfilController"
+           styleClass="app-background" prefWidth="1440" prefHeight="900">
+
+    <BorderPane>
+
+        <left>
+            <fx:include source="Sidebar.fxml"/>
+        </left>
+
+        <center>
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <StackPane alignment="TOP_CENTER">
+                    <padding><Insets top="30" right="40" bottom="40" left="40"/></padding>
+
+                    <VBox spacing="24" maxWidth="760">
+
+                        <Label text="Mon profil" styleClass="title-xl"/>
+
+                        <!-- Carte identité -->
+                        <HBox styleClass="glass-pane" spacing="20" alignment="CENTER_LEFT">
+                            <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+                            <StackPane>
+                                <ImageView fx:id="photoProfil" fitWidth="84" fitHeight="84" styleClass="avatar"/>
+                                <Button text="✎" styleClass="btn-icon" StackPane.alignment="BOTTOM_RIGHT"
+                                        onAction="#changerPhoto"/>
+                            </StackPane>
+
+                            <VBox spacing="4">
+                                <Label fx:id="lblNomComplet" text="Jessy Rakoto" styleClass="title-lg"/>
+                                <Label fx:id="lblEmailProfil" text="jessy@example.com" styleClass="subtitle"/>
+                                <Label text="Membre depuis janvier 2025" styleClass="muted-text"/>
+                            </VBox>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button text="Se déconnecter" styleClass="btn-secondary" onAction="#seDeconnecter"/>
+                        </HBox>
+
+                        <!-- Informations personnelles -->
+                        <VBox styleClass="glass-pane" spacing="16">
+                            <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                            <Label text="Informations personnelles" styleClass="title-md"/>
+                            <Separator styleClass="divider"/>
+
+                            <HBox spacing="20">
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label text="Nom" styleClass="field-label"/>
+                                    <TextField fx:id="champNom" styleClass="input-field"/>
+                                </VBox>
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label text="Prénom" styleClass="field-label"/>
+                                    <TextField fx:id="champPrenom" styleClass="input-field"/>
+                                </VBox>
+                            </HBox>
+
+                            <VBox spacing="6">
+                                <Label text="Adresse e-mail" styleClass="field-label"/>
+                                <TextField fx:id="champEmail" styleClass="input-field"/>
+                            </VBox>
+
+                            <VBox spacing="6">
+                                <Label text="Fuseau horaire" styleClass="field-label"/>
+                                <ComboBox fx:id="champFuseauHoraire" styleClass="combo-box" maxWidth="Infinity"
+                                          promptText="Indian/Antananarivo (GMT+3)"/>
+                            </VBox>
+
+                            <HBox alignment="CENTER_RIGHT">
+                                <Button text="Enregistrer les modifications" styleClass="btn-primary"
+                                        onAction="#enregistrerProfil"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Sécurité -->
+                        <VBox styleClass="glass-pane" spacing="16">
+                            <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                            <Label text="Sécurité" styleClass="title-md"/>
+                            <Separator styleClass="divider"/>
+
+                            <VBox spacing="6">
+                                <Label text="Mot de passe actuel" styleClass="field-label"/>
+                                <PasswordField fx:id="champMotDePasseActuel" styleClass="input-field"/>
+                            </VBox>
+                            <HBox spacing="20">
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label text="Nouveau mot de passe" styleClass="field-label"/>
+                                    <PasswordField fx:id="champNouveauMotDePasse" styleClass="input-field"/>
+                                </VBox>
+                                <VBox spacing="6" HBox.hgrow="ALWAYS">
+                                    <Label text="Confirmer" styleClass="field-label"/>
+                                    <PasswordField fx:id="champConfirmationMotDePasse" styleClass="input-field"/>
+                                </VBox>
+                            </HBox>
+
+                            <HBox alignment="CENTER_RIGHT">
+                                <Button text="Mettre à jour le mot de passe" styleClass="btn-primary"
+                                        onAction="#changerMotDePasse"/>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Préférences de notification -->
+                        <VBox styleClass="glass-pane" spacing="14">
+                            <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                            <Label text="Préférences de notification" styleClass="title-md"/>
+                            <Separator styleClass="divider"/>
+
+                            <HBox alignment="CENTER_LEFT" spacing="12">
+                                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                    <Label text="Rappels d'événements" styleClass="body-text"/>
+                                    <Label text="Recevoir une alerte avant chaque événement" styleClass="muted-text"/>
+                                </VBox>
+                                <CheckBox fx:id="prefRappels" styleClass="check-box" selected="true"/>
+                            </HBox>
+
+                            <HBox alignment="CENTER_LEFT" spacing="12">
+                                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                    <Label text="Notifications par e-mail" styleClass="body-text"/>
+                                    <Label text="Résumé quotidien envoyé par e-mail" styleClass="muted-text"/>
+                                </VBox>
+                                <CheckBox fx:id="prefEmail" styleClass="check-box"/>
+                            </HBox>
+
+                            <HBox alignment="CENTER_LEFT" spacing="12">
+                                <VBox spacing="2" HBox.hgrow="ALWAYS">
+                                    <Label text="Modifications d'événements récurrents" styleClass="body-text"/>
+                                    <Label text="M'avertir en cas de changement dans une série" styleClass="muted-text"/>
+                                </VBox>
+                                <CheckBox fx:id="prefRecurrence" styleClass="check-box" selected="true"/>
+                            </HBox>
+
+                        </VBox>
+
+                    </VBox>
+                </StackPane>
+            </ScrollPane>
+        </center>
+
+    </BorderPane>
+
+</StackPane>
