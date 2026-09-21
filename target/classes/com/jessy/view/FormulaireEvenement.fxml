@@ -9,12 +9,12 @@
   Sert à la fois pour "Créer un événement" et "Modifier l'événement"
   (le contrôleur adapte le titre, pré-remplit les champs, et change
   le libellé du bouton principal selon le mode).
-  Controller: com.jessy.controllers.FormulaireEvenementController
+    Controller: com.jessy.controller.FormulaireEvenementController
 -->
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.jessy.controllers.FormulaireEvenementController"
-           styleClass="app-background" prefWidth="1440" prefHeight="900">
+           fx:controller="com.jessy.controller.FormulaireEvenementController"
+           styleClass="app-background form-page" prefWidth="1440" prefHeight="900">
 
     <BorderPane>
 
@@ -53,7 +53,7 @@
                         <VBox spacing="6">
                             <Label text="Description" styleClass="field-label"/>
                             <TextArea fx:id="champDescription" styleClass="text-area"
-                                      promptText="Détails, notes, ordre du jour..." prefRowCount="3" wrapText="true"/>
+                                    promptText="Détails, notes, ordre du jour..." prefRowCount="3" wrapText="true"/>
                         </VBox>
 
                         <!-- Date / heure -->
@@ -97,10 +97,10 @@
                             <Label text="Couleur" styleClass="field-label"/>
                             <HBox fx:id="paletteCouleurs" spacing="10">
                                 <!-- Pastilles de couleur générées ou statiques -->
-                                <ToggleButton fx:id="couleurAccent" styleClass="day-toggle" selected="true"/>
-                                <ToggleButton fx:id="couleurBleu" styleClass="day-toggle"/>
-                                <ToggleButton fx:id="couleurVert" styleClass="day-toggle"/>
-                                <ToggleButton fx:id="couleurRouge" styleClass="day-toggle"/>
+                                <ToggleButton fx:id="couleurAccent" styleClass="day-toggle, color-swatch, color-accent" selected="true"/>
+                                <ToggleButton fx:id="couleurBleu" styleClass="day-toggle, color-swatch, color-blue"/>
+                                <ToggleButton fx:id="couleurVert" styleClass="day-toggle, color-swatch, color-green"/>
+                                <ToggleButton fx:id="couleurRouge" styleClass="day-toggle, color-swatch, color-red"/>
                             </HBox>
                         </VBox>
 
@@ -172,7 +172,7 @@
                                 <CheckBox fx:id="caseRappel" text="Activer" styleClass="check-box" selected="true"/>
                             </HBox>
                             <ComboBox fx:id="delaiRappel" styleClass="combo-box" maxWidth="Infinity"
-                                      promptText="15 minutes avant"/>
+                                    promptText="15 minutes avant"/>
                         </VBox>
 
                         <Separator styleClass="divider"/>

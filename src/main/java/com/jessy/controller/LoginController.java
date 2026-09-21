@@ -34,6 +34,7 @@ public class LoginController {
     public void initialize() {
         animerApparitionCarte();
         rendreResponsive();
+        ValidationClavier.installer(rootPane, this::onClickConnexion);
     }
 
     /**
@@ -127,6 +128,7 @@ public class LoginController {
             }
 
             stage.setScene(scene);
+            stage.setMaximized(true);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -156,6 +158,7 @@ public class LoginController {
         }
 
         stage.setScene(scene);
+        stage.setMaximized(true);
 
         } catch (IOException e) {
             e.printStackTrace();

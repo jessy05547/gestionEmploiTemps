@@ -14,7 +14,7 @@
 <StackPane xmlns="http://javafx.com/javafx"
         xmlns:fx="http://javafx.com/fxml"
         fx:controller="com.jessy.controller.DashboardController"
-        styleClass="app-background" prefWidth="1440" prefHeight="900">
+        styleClass="app-background dashboard-page" prefWidth="1440" prefHeight="900">
 
     <BorderPane>
 
@@ -32,12 +32,12 @@
                     <!-- En-tête -->
                     <HBox alignment="CENTER_LEFT" spacing="20">
                         <VBox spacing="4">
-                            <Label text="Bonjour, Jessy ☕" styleClass="title-xl"/>
+                            <Label fx:id="lblBienvenue" text="Bonjour ☕" styleClass="title-xl"/>
                             <Label fx:id="lblDateAujourdhui" text="Vendredi 18 septembre 2026" styleClass="subtitle"/>
                         </VBox>
                         <Region HBox.hgrow="ALWAYS"/>
-                        <Button fx:id="btnRechercher" text="🔍" styleClass="btn-icon"/>
-                        <Button fx:id="btnNotifTop" text="🔔" styleClass="btn-icon"/>
+                        <Button fx:id="btnRechercher" text="🔍" styleClass="btn-icon" onAction="#ouvrirRecherche"/>
+                        <Button fx:id="btnNotifTop" text="🔔" styleClass="btn-icon" onAction="#ouvrirNotifications"/>
                         <Button text="+ Nouvel événement" styleClass="btn-primary" onAction="#nouvelEvenement"/>
                     </HBox>
 
@@ -46,22 +46,22 @@
                         <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
                             <Label text="Événements aujourd'hui" styleClass="muted-text"/>
                             <Label fx:id="lblStatAujourdhui" text="4" styleClass="stat-number"/>
-                            <Label text="2 cours · 2 réunions" styleClass="muted-text"/>
+                            <Label fx:id="lblDetailAujourdhui" text="" styleClass="muted-text"/>
                         </VBox>
                         <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
                             <Label text="Cette semaine" styleClass="muted-text"/>
                             <Label fx:id="lblStatSemaine" text="17" styleClass="stat-number"/>
-                            <Label text="+3 vs semaine dernière" styleClass="muted-text"/>
+                            <Label fx:id="lblDetailSemaine" text="" styleClass="muted-text"/>
                         </VBox>
                         <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
                             <Label text="Récurrents actifs" styleClass="muted-text"/>
                             <Label fx:id="lblStatRecurrents" text="6" styleClass="stat-number"/>
-                            <Label text="Cours hebdomadaires" styleClass="muted-text"/>
+                            <Label fx:id="lblDetailRecurrents" text="Depuis la base de données" styleClass="muted-text"/>
                         </VBox>
                         <VBox styleClass="card" HBox.hgrow="ALWAYS" spacing="8">
                             <Label text="Notifications" styleClass="muted-text"/>
                             <Label fx:id="lblStatNotifs" text="3" styleClass="stat-number"/>
-                            <Label text="Non lues" styleClass="muted-text"/>
+                            <Label fx:id="lblDetailNotifs" text="Événements du jour" styleClass="muted-text"/>
                         </VBox>
                     </HBox>
 
@@ -79,9 +79,9 @@
                             <Separator styleClass="divider"/>
 
                             <ListView fx:id="listeAgendaJour" styleClass="glass-pane" prefHeight="380"
-                                      style="-fx-background-color: transparent;">
+                                    style="-fx-background-color: transparent;">
                                 <!-- Remplie dynamiquement par le contrôleur avec des cellules
-                                     personnalisées (heure, titre, lieu, badge de couleur) -->
+                                    personnalisées (heure, titre, lieu, badge de couleur) -->
                             </ListView>
                         </VBox>
 

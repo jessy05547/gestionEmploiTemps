@@ -165,6 +165,8 @@ html, body {
 .event-chip.cat-reunion { background: linear-gradient(to right, #8FA6D9, #6C86BF); color: #1A2338; }
 .event-chip.cat-cours   { background: linear-gradient(to right, var(--accent), var(--caramel)); color: var(--espresso); }
 .event-chip.cat-perso   { background: linear-gradient(to right, var(--success), #5E8248); color: #17250F; }
+.event-chip.cat-autre   { background: linear-gradient(to right, #A78BFA, #7C5FC7); color: #20143D; }
+.event-chip.cat-examen  { background: linear-gradient(to right, #F3A6A6, #C96565); color: #3A1515; }
 
 .more-events {
     font-size: 10px;

@@ -34,6 +34,11 @@
     -fx-background-color: linear-gradient(to bottom right, #2B1B14, #4A2C1F 40%, #6F4E37 75%, #8A6142 100%);
 }
 
+.events-content,
+.calendar-webview {
+    -fx-background-color: transparent;
+}
+
 .app-background .bokeh {
     -fx-fill: radial-gradient(center 50% 50%, radius 60%, rgba(217,142,74,0.25), rgba(217,142,74,0.0));
 }
@@ -254,6 +259,7 @@
 
 .combo-box, .date-picker {
     -fx-background-color: rgba(0,0,0,0.18);
+    -fx-text-fill: -text-light;
     -fx-background-radius: 10;
     -fx-border-color: -glass-border;
     -fx-border-radius: 10;
@@ -266,8 +272,61 @@
     -fx-background-color: transparent;
 }
 
+.combo-box .arrow-button,
+.date-picker .arrow-button,
+.date-picker .text-field {
+    -fx-background-color: transparent;
+}
+
+.combo-box .text-field,
+.date-picker .text-field {
+    -fx-text-fill: -text-light;
+    -fx-prompt-text-fill: -text-muted;
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow,
+.date-picker .arrow {
+    -fx-background-color: -text-light;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: -mocha;
+    -fx-border-color: -glass-border;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: -mocha;
+    -fx-text-fill: -text-light;
+    -fx-padding: 8 12;
+}
+
+.combo-box-popup .list-cell:hover,
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: -accent;
+    -fx-text-fill: -espresso;
+}
+
+.spinner .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-light;
+    -fx-prompt-text-fill: -text-muted;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: rgba(255,248,240,0.12);
+}
+
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: -text-light;
+}
+
 .text-area {
     -fx-background-color: rgba(0,0,0,0.18);
+    -fx-text-fill: -text-light;
+    -fx-prompt-text-fill: -text-muted;
     -fx-background-radius: 10;
     -fx-border-color: -glass-border;
     -fx-border-radius: 10;
@@ -341,6 +400,20 @@
     -fx-font-weight: bold;
 }
 
+.color-swatch {
+    -fx-border-color: rgba(255,248,240,0.65);
+    -fx-border-width: 2;
+}
+
+.color-accent { -fx-background-color: #D98E4A; }
+.color-blue { -fx-background-color: #5B8DEF; }
+.color-green { -fx-background-color: #63A375; }
+.color-red { -fx-background-color: #D0645B; }
+
+.color-swatch:selected {
+    -fx-effect: dropshadow(gaussian, rgba(255,248,240,0.85), 10, 0.35, 0, 0);
+}
+
 /* ============ BADGES / TAGS ============ */
 .badge {
     -fx-background-radius: 20;
@@ -358,6 +431,23 @@
 .divider {
     -fx-background-color: -glass-border;
     -fx-pref-height: 1;
+}
+
+.calendar-day {
+    -fx-text-fill: -text-muted;
+    -fx-padding: 7 4;
+    -fx-background-radius: 8;
+}
+
+.calendar-day-event {
+    -fx-background-color: rgba(217,142,74,0.28);
+    -fx-text-fill: -text-light;
+}
+
+.calendar-day-today {
+    -fx-background-color: -accent;
+    -fx-text-fill: -espresso;
+    -fx-font-weight: bold;
 }
 
 /* ============ SCROLLBARS DISCRÈTES ============ */

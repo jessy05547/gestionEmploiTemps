@@ -8,12 +8,12 @@
 <!--
   Notifications.fxml
   Liste des notifications (rappels d'événements, invitations, système).
-  Controller: com.jessy.controllers.NotificationsController
+    Controller: com.jessy.controller.NotificationsController
 -->
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.jessy.controllers.NotificationsController"
-           styleClass="app-background" prefWidth="1440" prefHeight="900">
+           fx:controller="com.jessy.controller.NotificationsController"
+           styleClass="app-background notifications-page" prefWidth="1440" prefHeight="900">
 
     <BorderPane>
 

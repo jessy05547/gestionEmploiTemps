@@ -11,18 +11,18 @@
   Controller: com.jessy.controllers.EvenementsController
 -->
 <StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.jessy.controllers.EvenementsController"
-           styleClass="app-background" prefWidth="1440" prefHeight="900">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.jessy.controller.EvenementsController"
+            styleClass="app-background events-page" prefWidth="1440" prefHeight="900">
 
-    <BorderPane>
+    <BorderPane style="-fx-background-color: transparent;">
 
         <left>
             <fx:include source="Sidebar.fxml"/>
         </left>
 
         <center>
-            <VBox spacing="20">
+            <VBox spacing="20" styleClass="events-content">
                 <padding><Insets top="30" right="40" bottom="30" left="40"/></padding>
 
                 <!-- En-tête -->
@@ -31,7 +31,7 @@
                     <Region HBox.hgrow="ALWAYS"/>
 
                     <TextField fx:id="champRecherche" promptText="Rechercher un événement..."
-                               styleClass="input-field" prefWidth="240"/>
+                                styleClass="input-field" prefWidth="240"/>
 
                     <ComboBox fx:id="filtreCategorie" promptText="Catégorie" styleClass="combo-box"/>
 
@@ -46,7 +46,9 @@
                     <padding><Insets top="4" right="4" bottom="4" left="4"/></padding>
 
                     <!-- Vue Calendrier : WebView chargeant calendar.html + calendar.js -->
-                    <WebView fx:id="webCalendrier" visible="true" managed="true"/>
+                    <WebView fx:id="webCalendrier" styleClass="calendar-webview"
+                             style="-fx-background-color: transparent;"
+                             visible="true" managed="true"/>
 
                     <!-- Vue Liste : alternative native JavaFX -->
                     <ScrollPane fx:id="scrollListe" visible="false" managed="false"

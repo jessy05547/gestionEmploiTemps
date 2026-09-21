@@ -9,12 +9,12 @@
   Profil.fxml
   Informations personnelles, sécurité (mot de passe), préférences de
   notification.
-  Controller: com.jessy.controllers.ProfilController
+    Controller: com.jessy.controller.ProfilController
 -->
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.jessy.controllers.ProfilController"
-           styleClass="app-background" prefWidth="1440" prefHeight="900">
+           fx:controller="com.jessy.controller.ProfilController"
+           styleClass="app-background profile-page" prefWidth="1440" prefHeight="900">
 
     <BorderPane>
 
@@ -83,6 +83,7 @@
                                 <Button text="Enregistrer les modifications" styleClass="btn-primary"
                                         onAction="#enregistrerProfil"/>
                             </HBox>
+                            <Label fx:id="lblErreurProfil" styleClass="error-text" visible="false" managed="false"/>
                         </VBox>
 
                         <!-- Sécurité -->
@@ -142,6 +143,13 @@
                                 <CheckBox fx:id="prefRecurrence" styleClass="check-box" selected="true"/>
                             </HBox>
 
+                        </VBox>
+
+                        <VBox styleClass="glass-pane" spacing="12">
+                            <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+                            <Label text="Zone du compte" styleClass="title-md"/>
+                            <Label text="La suppression est définitive et supprime aussi vos événements." styleClass="muted-text" wrapText="true"/>
+                            <Button text="Supprimer mon compte" styleClass="btn-danger" onAction="#supprimerCompte"/>
                         </VBox>
 
                     </VBox>

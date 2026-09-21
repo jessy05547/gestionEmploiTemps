@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.application.Platform;
+import com.jessy.controller.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,9 +31,23 @@ public class SidebarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Pour l'instant, un nom fixe. On branchera Session.getUtilisateurConnecte()
-        // une fois que la classe Session sera bien en place.
-        lblNomUtilisateur.setText("Utilisateur");
+        if (Session.estConnecte()) {
+            var utilisateur = Session.getUtilisateurConnecte();
+            lblNomUtilisateur.setText(utilisateur.getPrenom() + " " + utilisateur.getNom());
+        } else {
+            lblNomUtilisateur.setText("Utilisateur");
+        }
+        Platform.runLater(this::actualiserMenuActif);
+    }
+
+    private void actualiserMenuActif() {
+        if (sidebarRoot.getScene() == null) return;
+        var classes = sidebarRoot.getScene().getRoot().getStyleClass();
+        btnDashboard.getStyleClass().setAll(classes.contains("dashboard-page") ? "nav-item-active" : "nav-item");
+        btnEvenements.getStyleClass().setAll(classes.contains("events-page") ? "nav-item-active" : "nav-item");
+        btnCreer.getStyleClass().setAll(classes.contains("form-page") ? "nav-item-active" : "nav-item");
+        btnNotifications.getStyleClass().setAll(classes.contains("notifications-page") ? "nav-item-active" : "nav-item");
+        btnProfil.getStyleClass().setAll(classes.contains("profile-page") ? "nav-item-active" : "nav-item");
     }
 
     private void naviguerVers(String cheminFxml, String cheminCss) {
@@ -42,7 +58,8 @@ public class SidebarController implements Initializable {
             return;
         }
         Parent root = FXMLLoader.load(url);
-        Scene scene = new Scene(root);
+        Stage stage = (Stage) sidebarRoot.getScene().getWindow();
+        Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
 
         if (cheminCss != null) {
             var cssUrl = getClass().getResource(cheminCss);
@@ -53,8 +70,8 @@ public class SidebarController implements Initializable {
             }
         }
 
-        Stage stage = (Stage) sidebarRoot.getScene().getWindow();
         stage.setScene(scene);
+        stage.setMaximized(true);
     } catch (IOException e) {
         e.printStackTrace();
     }

@@ -31,6 +31,11 @@ public class RegisterController {
     @FXML private Label labelErreur;
 
     @FXML
+    private void initialize() {
+        ValidationClavier.installer(rootPane, this::onClickInscription);
+    }
+
+    @FXML
     private void onClickInscription() {
         String nom = champNom.getText().trim();
         String prenom = champPrenom.getText().trim();
@@ -86,6 +91,7 @@ public class RegisterController {
             Scene scene = new Scene(root, 900, 600);
             scene.getStylesheets().add(getClass().getResource(CSS_PATH).toExternalForm());
             stage.setScene(scene);
+            stage.setMaximized(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

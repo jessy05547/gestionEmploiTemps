@@ -24,6 +24,7 @@ public class App extends Application {
 
         stage.setTitle("Gestion d'emploi du temps");
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
